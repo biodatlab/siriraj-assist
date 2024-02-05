@@ -1,15 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import openai
 import streamlit as st
 from llama_index import (
@@ -24,7 +12,7 @@ from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from pathlib import Path
 import json
 
-openai.api_key = "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"
+openai.api_key = "..."
 st.set_page_config(page_title="Chatbot for doctor appointment", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title("Chatbot for doctor appointment")
 st.info("แชทบอทช่วยตอบคำถามสำหรับการนัดหมายแพทย์ที่โรงพยาบาลศิริราช ปิยมหาราชการุณย์ ดูข้อมูลแพทย์เพิ่มเติมได้ที่ (https://www.siphhospital.com/th/medical-services/find-doctor)", icon="📃")
@@ -99,11 +87,3 @@ if messages[-1]["role"] != "assistant":
             st.write(response.response)
             message = {"role": "assistant", "content": response.response}
             st.session_state.messages.append(message) # Add response to message history
-
-
-
-# In[ ]:
-
-
-
-
