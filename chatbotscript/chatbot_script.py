@@ -24,9 +24,8 @@ llm= OpenAI(model="gpt-4",system_prompt=system_prompt,temperature=0.3)
 service_context = ServiceContext.from_defaults(llm=llm)
 @st.cache_resource(show_spinner=False)
 
-def load_data():
+def load_data(file_path :str = "./data/siriraj_doctor_details(2).csv"):
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
-        file_path = "./data/siriraj_doctor_details(2).csv"
         PandasCSVReader = download_loader("PandasCSVReader")
         loader = PandasCSVReader()
         docs = loader.load_data(file=Path(file_path))
