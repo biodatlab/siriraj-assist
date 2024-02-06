@@ -16,7 +16,10 @@ from llama_index.postprocessor import SimilarityPostprocessor
 from llama_index.chat_engine.condense_question import CondenseQuestionChatEngine
 import json
 
-openai.api_key = "..."
+OPENAI_API_KEY = "sk-...-..."  # put your API key here
+FILE_PATH =  "./siriraj_doctor_details.jsonl"  # put a path to JSONL here
+
+openai.api_key = OPENAI_API_KEY
 st.set_page_config(page_title="Chatbot for doctor appointment", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title("Chatbot for doctor appointment")
 st.info("แชทบอทช่วยตอบคำถามสำหรับการนัดหมายแพทย์ที่โรงพยาบาลศิริราช ปิยมหาราชการุณย์ ดูข้อมูลแพทย์เพิ่มเติมได้ที่ (https://www.siphhospital.com/th/medical-services/find-doctor)", icon="📃")
@@ -36,19 +39,17 @@ Use only the data provided in the JSONL file in the index. The response should b
 
 
 @st.cache_resource(show_spinner=False)
-def load_data():
+def load_data(file_path: str = "./siriraj_doctor_details.jsonl"):
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
-        file_path = "D:\BME\siriraj_doctor_details.jsonl"
         JSONReader = download_loader("JSONReader")
         loader = JSONReader()
         docs = loader.load_data(Path(file_path), is_jsonl=True)
         service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.3, system_prompt= prompt ))
         index = VectorStoreIndex.from_documents(docs,service_context=service_context)
-
         return index
 
-index = load_data()
 
+index = load_data(FILE_PATH)
 retriever = VectorIndexRetriever(
     index=index,
     similarity_top_k=10,
