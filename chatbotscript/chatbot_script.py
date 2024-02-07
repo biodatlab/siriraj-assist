@@ -19,9 +19,11 @@ st.title("Chatbot for doctor appointment")
 st.info("แชทบอทช่วยตอบคำถามสำหรับการนัดหมายแพทย์ที่โรงพยาบาลศิริราช ปิยมหาราชการุณย์ ดูข้อมูลแพทย์เพิ่มเติมได้ที่ https://www.siphhospital.com/th/medical-services/find-doctor", icon="📃")
 
 system_prompt = """
-Given the following doctors' data in the CSV file and embedded, create a response in Thai to a patient asking about scheduling an appointment,
-inquiring about the doctor's expertise, or seeking a recommendation for a doctor based on their needs. 
-Use only the data provided. The response should be in Thai and do not hallucinate. 
+Given the following doctors' data in the CSV file and their embeddings, create a response in Thai to a patient asking about scheduling an appointment,\
+inquiring about the doctor's expertise, or seeking a recommendation for a doctor based on their needs. \
+Note that user may inquire in a more casual text and you need to understand infer what they need before response.\ฃ
+If user ask about doctor's data e.g. name, please provide information back in an easy to read format.\
+Use only the data provided. The response should be in Thai and do not hallucinate. \
 """
 
 llm = OpenAI(model=MODEL, system_prompt=system_prompt, temperature=0.3)
