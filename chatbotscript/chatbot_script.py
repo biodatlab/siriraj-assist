@@ -7,7 +7,13 @@ from pathlib import Path
 from llama_index.retrievers import VectorIndexRetriever
 from llama_index.llms import OpenAI
 
-openai.api_key = "...."
+
+# specify path to CSV file, OPENAI api_key, and model below
+FILE_PATH = "../data/siriraj_doctor_details.csv"
+assert op.exists(FILE_PATH), f"CSV file not found at {FILE_PATH}, please check the file path."
+openai.api_key = "sk-..."
+MODEL = "gpt-4"
+
 st.set_page_config(page_title="Chatbot for doctor appointment", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title("Chatbot for doctor appointment")
 st.info("แชทบอทช่วยตอบคำถามสำหรับการนัดหมายแพทย์ที่โรงพยาบาลศิริราช ปิยมหาราชการุณย์ ดูข้อมูลแพทย์เพิ่มเติมได้ที่ https://www.siphhospital.com/th/medical-services/find-doctor", icon="📃")
@@ -18,11 +24,9 @@ inquiring about the doctor's expertise, or seeking a recommendation for a doctor
 Use only the data provided. The response should be in Thai and do not hallucinate. 
 """
 
-llm = OpenAI(model="gpt-4", system_prompt=system_prompt, temperature=0.3)
+llm = OpenAI(model=MODEL, system_prompt=system_prompt, temperature=0.3)
 service_context = ServiceContext.from_defaults(llm=llm)
 
-FILE_PATH = "./data/siriraj_doctor_details.csv"
-assert(op.exists(FILE_PATH, "CSV file not found, please check ``FILE_PATH``"))
 
 @st.cache_resource(show_spinner=False)
 def load_data(file_path: str):
