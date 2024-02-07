@@ -20,11 +20,11 @@ system_prompt = """
 Given the following doctors' data in the CSV file and embedded, create a response in Thai to a patient asking about scheduling an appointment, inquiring about the doctor's expertise, or seeking a recommendation for a doctor based on their needs. Use only the data provided. The response should be in Thai and do not hallucinate. If the patient wants to make an appointment, create a CSV file content for a list of doctor appointments. The CSV should include columns for Doctor's Name, Appointment Time, Appointment Date, and Expertise. Ensure that the appointment times and dates match with the database. Format the data to align with standard CSV formatting conventions, including headers and comma-separated values. Provide the content as plain text that can be copied into a CSV file and confirm with the patient.
 """
 
-llm = OpenAI(model="gpt-4",system_prompt=system_prompt,temperature=0.3)
+llm = OpenAI(model="gpt-4", system_prompt=system_prompt, temperature=0.3)
 service_context = ServiceContext.from_defaults(llm=llm)
 @st.cache_resource(show_spinner=False)
 file_path = "./data/siriraj_doctor_details(2).csv"
-def load_data(file_path : str):
+def load_data(file_path: str):
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
         PandasCSVReader = download_loader("PandasCSVReader")
         loader = PandasCSVReader()
