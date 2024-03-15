@@ -56,4 +56,4 @@ def generate_response(question: str, history: list = []):
     return output_rag
 
 
-gr.ChatInterface(generate_response).launch(share=True)
+gr.ChatInterface(generate_response, title="สอบถามข้อมูลเกี่ยวกับการดูแลและพัฒนาเด็กวัย 0-3 ปีได้เลยครับ").launch()

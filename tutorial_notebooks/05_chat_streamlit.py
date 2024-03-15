@@ -60,12 +60,12 @@ def get_response(question: str):
 
 ### Streamlit app
 
-st.set_page_config(page_title="Chatbot for doctor appointment", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title="Chatbot", page_icon="", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title('Chat Interface')
 
 if "messages" not in st.session_state.keys(): # Initialize the chat messages history
     st.session_state.messages = [
-        {"role": "assistant", "content": "สอบถามข้อมูลการนัดหมายแพทย์ได้ที่นี่ครับ"}
+        {"role": "assistant", "content": "สอบถามข้อมูลเกี่ยวกับการดูแลและพัฒนาเด็กเล็กวัย 0-3 ปีได้เลยครับ"}
     ]
 
 if prompt := st.chat_input("Your question"): # Prompt for user input and save to chat history
