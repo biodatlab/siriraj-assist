@@ -17,3 +17,14 @@ using Streamlit or Gradio. The main purpose is to give an example how to use ret
 ## Requirements
 
 See `requirements.txt` for some dependencies. However, you should refer to API keys according to platform you use (ChatGPT, VertextAI, MistralAI, etc.).
+
+
+## Relevant keywords
+
+- [Function calling](https://platform.openai.com/docs/guides/function-calling)
+- [Routing module](https://docs.llamaindex.ai/en/stable/examples/low_level/router.html)
+- [12 RAG pain points](https://towardsdatascience.com/12-rag-pain-points-and-proposed-solutions-43709939a28c)
+- [Chain-of-Table](https://angelina-yang.medium.com/chain-of-table-how-to-talk-to-your-data-directly-3d74f1ae9ebc)
+
+We did not put an exhausive list here. Just to give an overview that the solution might involve combining multiple
+techniques together.
