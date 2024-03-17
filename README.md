@@ -1,5 +1,9 @@
 # Siriraj Assistant
 
+<p align="center" width="100%">
+    <img width="400px" src="tutorial_notebooks/llm_for_healthcare_and_services.png">
+</p>
+
 A demo chatbot for finding suitable, scheduling, or ask for suggestions for medical doctor checkouts at Siriraj.
 The chatbot should make a conversation in Thai and perform suggestions based on doctor's schedule and expertise
 based on user's requests.
